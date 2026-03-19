@@ -1,4 +1,4 @@
-# RRL Catalyst — Google Docs Extension Prototype
+# Google Docs Extension Prototype
 
 ## Project Structure
 
