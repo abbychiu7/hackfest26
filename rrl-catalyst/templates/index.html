@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RRL Catalyst — Google Docs Extension</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     GOOGLE DOCS MENUBAR
+══════════════════════════════════════════════════════════ -->
+<div class="menubar">
+  <svg class="docs-icon" viewBox="0 0 30 30" fill="none">
+    <rect width="30" height="30" rx="4" fill="#4285F4"/>
+    <rect x="7" y="7"  width="16" height="2" rx="1" fill="white"/>
+    <rect x="7" y="12" width="16" height="2" rx="1" fill="white"/>
+    <rect x="7" y="17" width="10" height="2" rx="1" fill="white"/>
+  </svg>
+
+  <span class="doc-name">HACKFEST_ANIMO.IO_2026</span>
+
+  <div class="title-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
+    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <polyline points="23 7 16 12 23 17 23 7"/>
+      <rect x="1" y="5" width="15" height="14" rx="2"/>
+    </svg>
+  </div>
+
+  <div class="menubar-right">
+    <!-- History icon -->
+    <button class="icon-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      </svg>
+    </button>
+    <!-- Comment icon -->
+    <button class="icon-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+      </svg>
+    </button>
+
+    <!-- Gemini + RRL Catalyst buttons -->
+    <div class="tool-group">
+      <button class="gemini-btn"
+              onclick="showToast('Gemini searches your Drive. RRL Catalyst searches the Global Academic Web!')">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C12 2 13.5 8.5 18 12C13.5 15.5 12 22 12 22C12 22 10.5 15.5 6 12C10.5 8.5 12 2 12 2Z"
+                fill="url(#gemini-grad)"/>
+          <defs>
+            <linearGradient id="gemini-grad" x1="6" y1="2" x2="18" y2="22">
+              <stop stop-color="#4285F4"/>
+              <stop offset="1" stop-color="#9C27B0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        Gemini
+      </button>
+
+      <div class="rrl-trigger">
+        <button class="rrl-btn" id="rrl-btn" onclick="togglePanel()">
+          <svg viewBox="0 0 14 14" fill="none">
+            <rect width="14" height="14" rx="2.5" fill="#1A73E8"/>
+            <path d="M2.5 7h9M7 2.5l4.5 4.5L7 11.5"
+                  stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          RRL Catalyst
+        </button>
+        <!-- Orange dot — visible when a step is in progress -->
+        <div class="rrl-step-dot" id="step-dot"></div>
+      </div>
+    </div>
+
+    <button class="share-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="11" width="18" height="11" rx="2"/>
+        <path d="M7 11V7a5 5 0 0110 0v4"/>
+      </svg>
+      Share
+    </button>
+    <div class="avatar">A</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     FORMAT BAR
+══════════════════════════════════════════════════════════ -->
+<div class="fmtbar">
+  <button class="fb">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+    </svg>
+  </button>
+  <div class="fsep"></div>
+  <select class="fs"><option>Normal text</option></select>
+  <div class="fsep"></div>
+  <select class="fs" style="min-width:74px"><option>Poppins</option></select>
+  <div class="fsep"></div>
+  <button class="fb">−</button>
+  <input  class="fn" value="11" readonly/>
+  <button class="fb">+</button>
+  <div class="fsep"></div>
+  <button class="fb" style="font-weight:700;font-size:13px">B</button>
+  <button class="fb" style="font-style:italic;font-size:13px">I</button>
+  <button class="fb" style="text-decoration:underline;font-size:13px">U</button>
+  <div class="fsep"></div>
+  <button class="fb" style="font-size:12px">≡</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MAIN LAYOUT
+══════════════════════════════════════════════════════════ -->
+<div class="main">
+
+  <!-- ── Left: Document Outline Sidebar ── -->
+  <div class="doc-sidebar">
+    <div class="dst">
+      Document tabs
+      <svg style="width:16px;height:16px;cursor:pointer;color:var(--ink3)"
+           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <line x1="5"  y1="12" x2="19" y2="12"/>
+      </svg>
+    </div>
+    <div class="dtab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+      </svg>
+      <span class="dtab-name">MAIN PAPER</span>
+      <span class="dtab-menu">⋮</span>
+    </div>
+    <p class="dsidebar-hint">Headings you add to the document will appear here.</p>
+  </div>
+
+  <!-- ── Centre: Google Doc Page ── -->
+  <div class="doc-scroll" id="doc-scroll">
+    <div class="doc-page" id="doc-page">
+
+      <!-- Right-gutter action icons (mirrors real Google Docs UI) -->
+      <div class="doc-gutter">
+        <button class="gb" title="Edit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+          </svg>
+        </button>
+        <button class="gb" title="Add comment">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+        </button>
+        <button class="gb" title="Emoji">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+            <line x1="9" y1="9" x2="9.01" y2="9"/>
+            <line x1="15" y1="9" x2="15.01" y2="9"/>
+          </svg>
+        </button>
+        <button class="gb" title="Suggest">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M9 9h6M9 12h6M9 15h4"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Document content — students highlight text here -->
+      <p class="doc-page-title">
+        Title: <strong>The Role of Artificial Intelligence in the Modern Workforce</strong>
+      </p>
+      <div class="doc-body" id="doc-body">
+        <p>The rapid development of Artificial Intelligence has sparked widespread debate
+           about its long-term implications on human employment and societal structures.
+           While dystopian narratives often frame AI as an existential threat to labor,
+           a more nuanced examination of the evidence suggests a markedly different
+           trajectory.</p>
+        <p>Central to this discussion is the augmentation hypothesis, which posits that
+           AI will not replace us humans but it is a tool to assist us, enhancing human
+           decision-making and productivity rather than eliminating the human element
+           from work altogether.</p>
+        <p>Studies consistently show that AI performs best in structured, repetitive tasks
+           while humans retain an irreplaceable advantage in creativity, empathy, and
+           complex reasoning. This complementary dynamic forms the foundation of what
+           researchers term human-AI collaboration.</p>
+        <p>This perspective is supported by historical precedent; the introduction of
+           industrial machinery, while initially disruptive, ultimately generated new
+           categories of employment and elevated the overall quality of human work.
+           The question thus becomes not whether AI will eliminate work, but rather
+           how human roles will evolve in partnership with intelligent systems.</p>
+      </div>
+    </div><!-- /doc-page -->
+
+    <!-- Floating "Verify with RRL Catalyst" button — appears on text selection -->
+    <button id="float-btn" onclick="lockClaim()">
+      <svg style="width:12px;height:12px;flex-shrink:0"
+           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+      Verify with RRL Catalyst
+    </button>
+  </div><!-- /doc-scroll -->
+
+  <!-- ══════════════════════════════════════════════════════
+       SIDE PANEL (mirrors Google Docs / Gemini panel style)
+  ══════════════════════════════════════════════════════ -->
+  <div class="side-panel" id="side-panel">
+
+    <!-- Panel header -->
+    <div class="panel-head">
+      <div class="panel-logo">
+        <svg viewBox="0 0 18 18" fill="none">
+          <rect width="18" height="18" rx="3" fill="#1A73E8"/>
+          <path d="M3 9h12M9 3l6 6-6 6"
+                stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        RRL Catalyst
+      </div>
+      <button class="panel-close" onclick="togglePanel()">×</button>
+    </div>
+
+    <!-- 3-step progress indicator (hidden on welcome screen) -->
+    <div class="step-bar" id="step-bar" style="display:none">
+      <div class="step-node">
+        <div class="step-circle" id="sc1">1</div>
+        <span class="step-label" id="sl1">Discover</span>
+      </div>
+      <div class="step-line" id="line1"></div>
+      <div class="step-node">
+        <div class="step-circle" id="sc2">2</div>
+        <span class="step-label" id="sl2">Select</span>
+      </div>
+      <div class="step-line" id="line2"></div>
+      <div class="step-node">
+        <div class="step-circle" id="sc3">3</div>
+        <span class="step-label" id="sl3">Ground</span>
+      </div>
+    </div>
+
+    <div class="panel-body" id="panel-body">
+
+      <!-- ── VIEW 0: Welcome / How-to ── -->
+      <div id="view-welcome" class="welcome">
+        <div class="welcome-title">Verify claims with the Global Academic Web</div>
+        <div class="welcome-sub">
+          Unlike Gemini, RRL Catalyst searches <strong>external research papers</strong>
+          — not just your Drive.
+        </div>
+        <div class="welcome-steps">
+          <div class="ws">
+            <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+            <div class="ws-text"><strong>Highlight</strong> any claim in the document</div>
+          </div>
+          <div class="ws">
+            <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <div class="ws-text"><strong>Discover</strong> — AI searches the global academic web</div>
+          </div>
+          <div class="ws">
+            <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 11l3 3L22 4"/>
+            </svg>
+            <div class="ws-text"><strong>Select</strong> the most relevant source</div>
+          </div>
+          <div class="ws">
+            <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            </svg>
+            <div class="ws-text"><strong>Ground</strong> — word-for-word verification + RRL synthesis</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── VIEW 1: Discovery (source cards) ── -->
+      <div id="view-discovery" style="display:none">
+        <div class="discovery-panel">
+          <div class="disc-gemini-note">
+            <strong>Why not Gemini?</strong> Gemini searches your internal Drive.
+            RRL Catalyst searches the <strong>Global Academic Web</strong>
+            — peer-reviewed journals, research papers, and verified external sources.
+          </div>
+          <div class="disc-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            Suggested Sources
+          </div>
+          <!-- Searching spinner -->
+          <div class="disc-searching" id="disc-searching">
+            <div class="spin"></div>
+            Searching the Global Academic Web…
+          </div>
+          <!-- Source cards injected by discovery.js -->
+          <div id="source-list" style="display:none"></div>
+          <!-- Use source button — visible after card selection -->
+          <button id="btn-use-source" onclick="goToGrounding()"
+                  style="display:none;width:100%;background:var(--blue);color:white;border:none;
+                         border-radius:20px;padding:7px;font-family:var(--font);font-size:12px;
+                         font-weight:500;cursor:pointer;margin-top:4px;transition:background .2s">
+            Use Selected Source →
+          </button>
+        </div>
+      </div>
+
+      <!-- ── VIEW 2: Grounding (paste paper text) ── -->
+      <div id="view-grounding" style="display:none">
+        <div class="grounding-panel">
+          <div class="selected-source-pill" id="sel-source-pill">
+            <svg class="ssp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            <span class="ssp-title" id="sel-source-title">—</span>
+            <span class="ssp-change" onclick="goBack()">← Change</span>
+          </div>
+
+          <div class="paste-label">Paste Full Paper Text</div>
+          <p class="paste-hint">
+            Open the PDF → <strong>Ctrl+A</strong> → Copy → Paste below.
+            Every word you paste is what gets highlighted word-for-word in Source View.
+          </p>
+          <textarea class="ta" id="source-input" rows="5"
+                    placeholder="Paste the full paper text here…"
+                    onfocus="this.style.borderColor='var(--blue)'"
+                    onblur="this.style.borderColor='var(--border2)'"></textarea>
+          <div class="paste-footer">
+            <span id="fetch-status"></span>
+            <button class="btn-go" id="analyze-btn" onclick="runGrounding()">
+              <div class="sp"></div>
+              <span class="bt">▶ Analyze</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SKELETON loader ── -->
+      <div id="view-skeleton" class="skel-wrap">
+        <div class="sk" style="width:55%;height:14px;margin-bottom:12px"></div>
+        <div class="sk" style="width:100%"></div>
+        <div class="sk" style="width:85%"></div>
+        <div class="sk" style="width:70%;margin-bottom:14px"></div>
+        <div class="sk" style="width:42%;height:13px;margin-bottom:9px"></div>
+        <div class="sk" style="width:100%;height:48px;border-radius:6px;margin-bottom:12px"></div>
+        <div class="sk" style="width:48%;height:13px;margin-bottom:9px"></div>
+        <div class="sk" style="width:100%;height:65px;border-radius:6px"></div>
+      </div>
+
+      <!-- ── VIEW 3: Results ── -->
+      <div id="view-results" class="results-wrap">
+
+        <!-- Selected claim pill -->
+        <div class="claim-pill">
+          <div class="cp-lbl">Verified Claim</div>
+          <div class="cp-txt" id="r-claim"></div>
+        </div>
+
+        <!-- Status chip (tier + recency) -->
+        <div class="chip-row">
+          <div class="chip">
+            <div class="chip-dot"></div>
+            <span id="r-chip">—</span>
+          </div>
+        </div>
+
+        <!-- Tabs: Verification / Source View / Synthesis -->
+        <div class="tabs">
+          <button class="tb active" onclick="switchTab('verification', this)">Verification</button>
+          <button class="tb"        onclick="switchTab('sources', this)">Source View</button>
+          <button class="tb"        onclick="switchTab('synthesis', this)">Synthesis</button>
+        </div>
+
+        <!-- ── Tab: Verification ── -->
+        <div class="tp active" id="tab-verification">
+          <div class="sec">
+            <div class="slbl">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              Credibility Status
+            </div>
+            <div class="sbadge credible" id="r-badge">
+              <div class="bdot"></div>
+              <span id="r-status">HIGHLY CREDIBLE</span>
+            </div>
+            <div class="score-row">
+              <span class="slb">Credibility</span>
+              <div class="str"><div class="stf" id="r-score-fill" style="width:0%"></div></div>
+              <span class="sval" id="r-score-val">—</span>
+            </div>
+          </div>
+          <div class="sec">
+            <div class="slbl">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              AI Context Note
+            </div>
+            <div class="ibox" id="r-explanation"></div>
+          </div>
+          <div class="sec">
+            <div class="slbl">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                   style="width:11px;height:11px">
+                <path d="M9 11l3 3L22 4"/>
+                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+              </svg>
+              Credibility Rubric
+            </div>
+            <div style="font-size:10px;color:var(--ink3);margin-bottom:7px;line-height:1.5">
+              How the engine judges a source. Use this to evaluate sources yourself.
+            </div>
+            <div id="rubric-rows"></div>
+          </div>
+        </div>
+
+        <!-- ── Tab: Source View ── -->
+        <div class="tp" id="tab-sources">
+          <!-- POI banner — tier-aware, always populated -->
+          <div id="poi-banner"
+               style="display:none;margin:8px 14px 0;border-radius:6px;padding:8px 10px;
+                      font-size:11px;line-height:1.55;border-left:3px solid #ccc">
+            <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px">
+              <span id="poi-icon"       style="font-size:13px"></span>
+              <span id="poi-tier-label" style="font-size:9px;font-weight:600;
+                                               letter-spacing:.6px;text-transform:uppercase"></span>
+            </div>
+            <div id="poi-note" style="color:var(--ink2)"></div>
+          </div>
+
+          <div class="paper-head" style="margin-top:6px">
+            <span class="phlbl">Full Paper</span>
+            <div style="display:flex;align-items:center;gap:5px">
+              <span id="hl-count"></span>
+              <button id="next-hl" onclick="nextHL()">↓ Next</button>
+            </div>
+          </div>
+          <!-- Full paper text injected by render.js -->
+          <div id="paper-body">
+            <span style="color:var(--ink3);font-style:italic;font-size:11px;
+                         padding:8px 14px;display:block">
+              Run analysis to load.
+            </span>
+          </div>
+        </div>
+
+        <!-- ── Tab: Synthesis ── -->
+        <div class="tp" id="tab-synthesis">
+          <div class="sec">
+            <div class="slbl">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+              </svg>
+              RRL Synthesis
+            </div>
+            <div class="synbox" id="r-synthesis"></div>
+            <button class="btn-insert" onclick="showToast('✅ Inserted into Google Doc!')">
+              <svg style="width:12px;height:12px" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+              Insert into Google Doc
+            </button>
+          </div>
+          <div class="sec">
+            <div class="slbl">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+              </svg>
+              APA 7th Edition
+            </div>
+            <div class="citebox" id="r-citation"></div>
+            <button class="btn-cite" onclick="copyCitation()">
+              <svg style="width:12px;height:12px" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+              </svg>
+              Copy Citation
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /view-results -->
+
+    </div><!-- /panel-body -->
+  </div><!-- /side-panel -->
+
+</div><!-- /main -->
+
+<!-- Toast notification -->
+<div class="toast" id="toast"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     JAVASCRIPT — load order matters:
+     utils → api → panel → highlight → discovery → grounding → render
+══════════════════════════════════════════════════════════ -->
+<script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+<script src="{{ url_for('static', filename='js/panel.js') }}"></script>
+<script src="{{ url_for('static', filename='js/highlight.js') }}"></script>
+<script src="{{ url_for('static', filename='js/discovery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/grounding.js') }}"></script>
+<script src="{{ url_for('static', filename='js/render.js') }}"></script>
+
+</body>
+</html>
