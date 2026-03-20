@@ -36,6 +36,7 @@ def gemini_proxy():
             prompt,
             generation_config=genai.types.GenerationConfig(
                 max_output_tokens=max_tokens,
+                response_mime_type="application/json",
             ),
         )
         return jsonify({"text": response.text})

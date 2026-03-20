@@ -130,12 +130,28 @@
         <line x1="5"  y1="12" x2="19" y2="12"/>
       </svg>
     </div>
-    <div class="dtab">
+    <div class="dtab" id="tab0" onclick="switchDoc(0)" style="margin-bottom: 5px; background: var(--blue-light);">
       <svg viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
         <polyline points="14 2 14 8 20 8"/>
       </svg>
-      <span class="dtab-name">MAIN PAPER</span>
+      <span class="dtab-name" style="font-size:11px;">SOCIAL MEDIA INFLUENCE</span>
+      <span class="dtab-menu">⋮</span>
+    </div>
+    <div class="dtab" id="tab1" onclick="switchDoc(1)" style="margin-bottom: 5px; background: transparent;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+      </svg>
+      <span class="dtab-name" style="font-size:11px;">SLEEP & COGNITION</span>
+      <span class="dtab-menu">⋮</span>
+    </div>
+    <div class="dtab" id="tab2" onclick="switchDoc(2)" style="background: transparent;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+      </svg>
+      <span class="dtab-name" style="font-size:11px;">GAMIFICATION EFFECTS</span>
       <span class="dtab-menu">⋮</span>
     </div>
     <p class="dsidebar-hint">Headings you add to the document will appear here.</p>
@@ -175,27 +191,14 @@
 
       <!-- Document content — students highlight text here -->
       <p class="doc-page-title">
-        Title: <strong>The Role of Artificial Intelligence in the Modern Workforce</strong>
+        Title: <strong>Chapter 1: The Impact of Social Media on Academic Performance Among High School Students</strong>
       </p>
       <div class="doc-body" id="doc-body">
-        <p>The rapid development of Artificial Intelligence has sparked widespread debate
-           about its long-term implications on human employment and societal structures.
-           While dystopian narratives often frame AI as an existential threat to labor,
-           a more nuanced examination of the evidence suggests a markedly different
-           trajectory.</p>
-        <p>Central to this discussion is the augmentation hypothesis, which posits that
-           AI will not replace us humans but it is a tool to assist us, enhancing human
-           decision-making and productivity rather than eliminating the human element
-           from work altogether.</p>
-        <p>Studies consistently show that AI performs best in structured, repetitive tasks
-           while humans retain an irreplaceable advantage in creativity, empathy, and
-           complex reasoning. This complementary dynamic forms the foundation of what
-           researchers term human-AI collaboration.</p>
-        <p>This perspective is supported by historical precedent; the introduction of
-           industrial machinery, while initially disruptive, ultimately generated new
-           categories of employment and elevated the overall quality of human work.
-           The question thus becomes not whether AI will eliminate work, but rather
-           how human roles will evolve in partnership with intelligent systems.</p>
+        <p><strong>Chapter 1: Introduction</strong></p>
+        <p>In the contemporary digital era, social media platforms have fundamentally altered the landscape of adolescent communication, socialization, and information consumption. The pervasive integration of these technologies into the daily routines of high school students is unprecedented. Given this ubiquity, understanding how platforms like Instagram, TikTok, and Snapchat intersect with educational outcomes has become a critical area of investigation.</p>
+        <p>Proponents of social media argue that it fosters collaborative learning, provides access to diverse perspectives, and supports peer-to-peer academic engagement. Conversely, critics suggest a myriad of negative consequences. Anecdotal and preliminary survey data indicates that excessive social media usage strongly correlates with reduced study time and increased distractibility.</p>
+        <p>Furthermore, psychological literature points to the disruptive effects of continuous digital notifications on sustained attention span and deep cognitive processing, both of which are essential for academic success. Secondary effects, such as disrupted sleep patterns due to late-night screen time, also contribute detrimentally to a student's daytime alertness and performance.</p>
+        <p>Therefore, this study aims to systematically investigate the specific behavioral mechanisms through which daily social media consumption influences high school students' academic performance, differentiating between recreational scrolling and academically purposeful digital interactions.</p>
       </div>
     </div><!-- /doc-page -->
 
@@ -518,6 +521,201 @@
 <script src="{{ url_for('static', filename='js/discovery.js') }}"></script>
 <script src="{{ url_for('static', filename='js/grounding.js') }}"></script>
 <script src="{{ url_for('static', filename='js/render.js') }}"></script>
+
+<script>
+  const docsData = [
+    {
+      title: "Title: <strong>Chapter 1: The Impact of Social Media on Academic Performance Among High School Students</strong>",
+      body: `
+        <div style="text-align: center; margin-bottom: 30px;">
+          <h2>The Impact of Social Media on Academic Performance Among High School Students</h2>
+          <br>
+          <p>A Research Proposal Presented to the Faculty of the Senior High School Department</p>
+          <br>
+          <p>In Partial Fulfillment of the Requirements for Practical Research</p>
+          <br>
+          <p>By: [Student Names]</p>
+          <p>Month, Year</p>
+        </div>
+
+        <h3>Abstract</h3>
+        <p>This study aims to investigate the complex relationship between social media usage and the academic performance of high school students. With the ubiquitous nature of digital platforms in adolescent life, concerns have been raised regarding their potential to distract students, reduce study time, and disrupt sleep patterns. By surveying a diverse cohort of 11th and 12th graders, this research will quantify daily screen time across various platforms and correlate it with grade point averages (GPA) and self-reported study habits. Preliminary findings suggest a negative correlation between high non-academic social media usage and academic achievement, highlighting the need for educational interventions that promote responsible digital citizenship.</p>
+        <br>
+
+        <h3>Chapter 1: The Problem and Its Background</h3>
+        <br>
+
+        <h4>Background of the Study</h4>
+        <p>In the contemporary digital era, social media platforms such as Instagram, TikTok, Facebook, and Snapchat have fundamentally altered the landscape of adolescent communication, socialization, and information consumption. The pervasive integration of these technologies into the daily routines of high school students is unprecedented. Given this ubiquity, understanding how these platforms intersect with educational outcomes has become a critical area of investigation for educators, parents, and policymakers.</p>
+        <p>Proponents of social media argue that it fosters collaborative learning, provides access to diverse perspectives, and supports peer-to-peer academic engagement. Conversely, critics suggest a myriad of negative consequences. Anecdotal evidence and preliminary survey data often indicate that excessive social media usage strongly correlates with reduced study time, increased distractibility in the classroom, and poorer academic outcomes overall.</p>
+
+        <h4>Statement of the Problem</h4>
+        <p>This study seeks to answer the overarching question: How does daily social media consumption impact the academic performance of senior high school students?</p>
+        <p>Specifically, it aims to answer the following sub-problems:</p>
+        <ol style="margin-left: 40px; margin-bottom: 13px;">
+          <li>What is the average daily screen time spent by students on social media platforms?</li>
+          <li>Which social media platforms are most frequently used for non-academic purposes?</li>
+          <li>Is there a significant relationship between the hours spent on social media and the students' General Weighted Average (GWA)?</li>
+        </ol>
+
+        <h4>Conceptual Framework</h4>
+        <p>The study utilizes an Independent Variable-Dependent Variable (IV-DV) model. The independent variable is the <strong>Social Media Usage</strong>, measured in hours per day and type of platform used. The dependent variable is the students' <strong>Academic Performance</strong>, quantified by their most recent General Weighted Average (GWA). The study hypothesizes that as the independent variable (non-academic screen time) increases, the dependent variable (academic performance) will decrease, mediated by factors such as sleep deprivation and reduced study hours.</p>
+
+        <h4>Significance of the Study</h4>
+        <p>The findings of this research will be beneficial to several stakeholders:</p>
+        <ul style="margin-left: 40px; margin-bottom: 13px;">
+          <li><strong>Students:</strong> It will raise awareness regarding their digital habits and encourage better time management.</li>
+          <li><strong>Teachers:</strong> It will provide insights into how digital distractions affect learning, helping them formulate better classroom policies.</li>
+          <li><strong>Parents:</strong> It will serve as a guide for monitoring and regulating their children’s screen time at home.</li>
+          <li><strong>Future Researchers:</strong> It will act as foundational literature for subsequent studies on digital well-being and education.</li>
+        </ul>
+
+        <h4>Scope and Delimitation</h4>
+        <p>This study is strictly limited to 11th and 12th-grade students enrolled during the current academic year at the target institution. It will focus primarily on the quantitative correlation between self-reported social media usage and academic grades. It does not intend to diagnose psychological conditions such as clinical social media addiction or ADHD.</p>
+
+        <h4>Definition of Terms</h4>
+        <ul style="margin-left: 40px; margin-bottom: 13px;">
+          <li><strong>Academic Performance:</strong> The measurable educational achievement of a student, represented in this study by their General Weighted Average (GWA).</li>
+          <li><strong>Social Media:</strong> Websites and applications that enable users to create and share content or participate in social networking (e.g., TikTok, Instagram).</li>
+          <li><strong>Screen Time:</strong> The total amount of time an individual spends interacting with device screens per day.</li>
+        </ul>
+      `
+    },
+    {
+      title: "Title: <strong>Chapter 1: Effects of Sleep Deprivation on Cognitive Function in College Students</strong>",
+      body: `
+        <div style="text-align: center; margin-bottom: 30px;">
+          <h2>Effects of Sleep Deprivation on Cognitive Function in College Students</h2>
+          <br>
+          <p>A Research Proposal Presented to the Department of Psychology</p>
+          <br>
+          <p>In Partial Fulfillment of the Requirements for Cognitive Psychology</p>
+          <br>
+          <p>By: [Student Names]</p>
+          <p>Month, Year</p>
+        </div>
+
+        <h3>Abstract</h3>
+        <p>Sleep deprivation is highly prevalent among college students, often resulting from heavy academic workloads, extracurricular commitments, and poor time management. This study investigates the direct impact of insufficient sleep on specific cognitive functions, primarily working memory, sustained attention, and executive decision-making. Utilizing standardized neurocognitive assessments administered to a sample of undergraduate students reporting varied sleep durations, the research aims to quantify cognitive deficits associated with acute and chronic sleep loss. The results are expected to underscore the critical necessity of adequate sleep hygiene for academic success and overall cognitive health in university populations.</p>
+        <br>
+
+        <h3>Chapter 1: The Problem and Its Background</h3>
+        <br>
+
+        <h4>Background of the Study</h4>
+        <p>Sleep deprivation is an epidemic within collegiate populations worldwide, often rationalized by students as an inevitable trade-off for academic and social success. College demands, characterized by heavy course loads, part-time employment, and an active social life, frequently compel students to sacrifice adequate rest. Despite growing awareness campaigns, the normalization of sleep deficiency remains deeply entrenched in university culture.</p>
+        <p>From a neurobiological standpoint, sufficient sleep is unequivocally essential for optimal cognitive function, particularly regarding memory consolidation, executive function, and emotional regulation. When sleep architecture is repeatedly disrupted, the brain exhibits decreased metabolic activity in the prefrontal cortex, leading to impaired decision-making, diminished sustained attention, and lower overall academic retention.</p>
+
+        <h4>Statement of the Problem</h4>
+        <p>This research aims to determine the effects of varying degrees of sleep deprivation on the cognitive functionality of undergraduate students.</p>
+        <p>Specifically, it seeks to answer the following questions:</p>
+        <ol style="margin-left: 40px; margin-bottom: 13px;">
+          <li>What is the average number of hours of sleep obtained by college students during a typical academic week?</li>
+          <li>How does getting less than six hours of sleep per night affect performance on working memory tasks?</li>
+          <li>Is there a significant difference in sustained attention between adequately rested students and sleep-deprived students?</li>
+        </ol>
+
+        <h4>Theoretical Framework</h4>
+        <p>This study is anchored on the <strong>Synaptic Homeostasis Hypothesis (SHY)</strong> proposed by Tononi and Cirelli. SHY posits that learning during wakefulness strengthens synaptic connections throughout the brain, increasing cellular energy demands. Sleep is necessary to downscale these synapses, restoring cellular homeostasis, consolidating memories, and freeing up capacity for new learning the following day. When sleep is curtailed, this downscaling process is incomplete, leading to cognitive saturation and impaired learning capacity.</p>
+
+        <h4>Significance of the Study</h4>
+        <p>The results of this study are deemed highly significant to the following groups:</p>
+        <ul style="margin-left: 40px; margin-bottom: 13px;">
+          <li><strong>University Administrators:</strong> It provides empirical data to justify policies that promote student well-being, such as adjusting early class schedules or managing assignment loads.</li>
+          <li><strong>Counseling Services:</strong> It emphasizes the need to include sleep hygiene education in student wellness programs.</li>
+          <li><strong>Students:</strong> It offers scientific proof of the detrimental effects of "pulling all-nighters," encouraging healthier lifestyle choices.</li>
+        </ul>
+
+        <h4>Scope and Delimitation</h4>
+        <p>The study is confined to undergraduate students currently enrolled in the College of Arts and Sciences. The assessment of cognitive function will be limited to computerized working memory (N-back test) and sustained attention (PVT) tasks. It will rely on self-reported sleep logs rather than polysomnography (clinical sleep tracking).</p>
+
+        <h4>Definition of Terms</h4>
+        <ul style="margin-left: 40px; margin-bottom: 13px;">
+          <li><strong>Sleep Deprivation:</strong> The condition of obtaining inadequate sleep, defined in this study as consistently sleeping less than 6 hours per 24-hour cycle.</li>
+          <li><strong>Cognitive Function:</strong> Mental processes involving the acquisition, storage, retrieval, and use of information, specifically memory and attention.</li>
+          <li><strong>Working Memory:</strong> The system responsible for the transient holding and processing of new and already-stored information.</li>
+        </ul>
+      `
+    },
+    {
+      title: "Title: <strong>Chapter 1: The Role of Gamification in Enhancing Student Engagement</strong>",
+      body: `
+        <div style="text-align: center; margin-bottom: 30px;">
+          <h2>The Role of Gamification in Enhancing Student Engagement in Middle School Mathematics</h2>
+          <br>
+          <p>A Research Proposal Presented to the College of Education</p>
+          <br>
+          <p>In Partial Fulfillment of the Requirements for Educational Technology</p>
+          <br>
+          <p>By: [Student Names]</p>
+          <p>Month, Year</p>
+        </div>
+
+        <h3>Abstract</h3>
+        <p>As traditional pedagogical methods struggle to maintain the attention of digital-native students, educators are increasingly turning to gamification—the integration of game design elements into non-game environments. This study explores the efficacy of gamified learning platforms (e.g., Kahoot!, Quizizz, Classcraft) in enhancing behavioral and cognitive engagement among middle school mathematics students. By utilizing a mixed-methods approach involving classroom observations, student surveys, and academic performance tracking over a six-week period, the research seeks to compare engagement levels between traditionally taught classes and those utilizing gamified mechanics. Findings will offer pedagogical recommendations for the effective and sustainable implementation of game-based learning.</p>
+        <br>
+
+        <h3>Chapter 1: The Problem and Its Background</h3>
+        <br>
+
+        <h4>Background of the Study</h4>
+        <p>Traditional teaching methods increasingly face challenges in maintaining student motivation and engagement in the modern classroom. As digital native students become accustomed to highly interactive and rewarding virtual environments, static educational models—such as prolonged lectures and rote memorization—often fail to captivate their attention. In response, gamification has emerged as a promising educational strategy.</p>
+        <p>Integrating mechanics such as point systems, leaderboards, badges, and narrative-driven quests into academic curricula has been shown to stimulate both intrinsic and extrinsic motivation. When properly implemented, gamified learning environments can transform passive observers into active participants, fostering a sense of autonomy and competence that is critical for self-directed learning. However, questions remain regarding whether these interactive systems lead to long-term academic retention or merely short-term behavioral compliance.</p>
+
+        <h4>Statement of the Problem</h4>
+        <p>This study aims to evaluate the impact of gamification strategies on the engagement and academic performance of 8th-grade mathematics students.</p>
+        <p>Specifically, it aims to answer:</p>
+        <ol style="margin-left: 40px; margin-bottom: 13px;">
+          <li>What is the level of student engagement in mathematics prior to the implementation of gamified learning?</li>
+          <li>How do specific game mechanics (badges, leaderboards, points) influence student motivation to complete assignments?</li>
+          <li>Is there a significant difference in assessment scores between students exposed to gamified learning versus traditional instruction?</li>
+        </ol>
+
+        <h4>Theoretical Framework</h4>
+        <p>This research is grounded in the <strong>Self-Determination Theory (SDT)</strong> authored by Deci and Ryan. SDT asserts that human motivation is driven by three innate psychological needs: competence, autonomy, and relatedness. Gamification directly addresses these needs by providing immediate feedback and achievable goals (competence), allowing students multiple paths to succeed (autonomy), and fostering community through team-based mechanics or friendly competition (relatedness). When these three elements are satisfied, intrinsic motivation is maximized.</p>
+
+        <h4>Significance of the Study</h4>
+        <p>The study provides valuable insights for:</p>
+        <ul style="margin-left: 40px; margin-bottom: 13px;">
+          <li><strong>Curriculum Developers:</strong> It offers evidence to support the integration of interactive technologies into standard curricula.</li>
+          <li><strong>Teachers:</strong> It provides practical strategies for managing classroom behavior and boosting participation without relying solely on punitive measures.</li>
+          <li><strong>Students:</strong> It helps create a more enjoyable, stress-reduced learning environment that caters to modern technological fluency.</li>
+        </ul>
+
+        <h4>Scope and Delimitation</h4>
+        <p>This study focuses exclusively on 8th-grade mathematics classes at a single public middle school over a six-week grading period. Engagement will be assessed via self-reported surveys and teacher observational checklists. The research will not evaluate the financial costs of purchasing gamified software licenses.</p>
+
+        <h4>Definition of Terms</h4>
+        <ul style="margin-left: 40px; margin-bottom: 13px;">
+          <li><strong>Gamification:</strong> The application of typical elements of game playing (e.g., point scoring, competition with others, rules of play) to educational activities.</li>
+          <li><strong>Student Engagement:</strong> The degree of attention, curiosity, interest, optimism, and passion that students show when they are learning or being taught.</li>
+          <li><strong>Intrinsic Motivation:</strong> The inner drive to engage in an activity purely for the joy and satisfaction inherent in the activity itself.</li>
+        </ul>
+      `
+    }
+  ];
+
+  function switchDoc(index) {
+    document.querySelectorAll('.dtab').forEach((el, i) => {
+      if (i === index) {
+        el.style.background = 'var(--blue-light)';
+      } else {
+        el.style.background = 'transparent';
+      }
+    });
+    const titleEl = document.querySelector('.doc-page-title');
+    const bodyEl = document.getElementById('doc-body');
+    if (titleEl && bodyEl) {
+      titleEl.innerHTML = docsData[index].title;
+      bodyEl.innerHTML = docsData[index].body;
+    }
+  }
+
+  // Initialize first doc
+  window.addEventListener('DOMContentLoaded', () => {
+    switchDoc(0);
+  });
+</script>
 
 </body>
 </html>
