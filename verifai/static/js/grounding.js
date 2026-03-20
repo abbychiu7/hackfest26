@@ -8,7 +8,7 @@ let REAL_SOURCE_TEXT = "";
 
 /** Run the grounding (verification) analysis against pasted paper text. */
 async function runGrounding() {
-    const btn = document.getElementById("analyze-btn");
+    const btn        = document.getElementById("analyze-btn");
     const sourceText = document.getElementById("source-input").value.trim();
 
     if (sourceText.length < 80) {
@@ -25,13 +25,13 @@ async function runGrounding() {
     setStep(3);
     showView("skeleton");
 
-    const truncated = sourceText.length > 14000 ? sourceText.slice(0, 14000) + "…" : sourceText;
-    const sourceRef = SELECTED_SOURCE ? SELECTED_SOURCE.title : "provided source";
+    const truncated  = sourceText.length > 14000 ? sourceText.slice(0, 14000) + "…" : sourceText;
+    const sourceRef  = SELECTED_SOURCE ? SELECTED_SOURCE.title : "provided source";
     const sourceYear = SELECTED_SOURCE ? (SELECTED_SOURCE.year || "unknown") : "unknown";
 
     try {
         const prompt = buildGroundingPrompt(CURRENT_CLAIM, sourceRef, sourceYear, truncated);
-        const raw = await callGemini(prompt, 1200);
+        const raw    = await callGemini(prompt, 1200);
         const result = JSON.parse(raw.replace(/```json|```/g, "").trim());
         renderResults(result.verification_phase, wc);
     } catch (err) {
@@ -47,10 +47,10 @@ async function runGrounding() {
 /** Fallback demo verification result. */
 function getDemoVerification() {
     return {
-        status: "HIGHLY CREDIBLE",
+        status:            "HIGHLY CREDIBLE",
         credibility_score: "88%",
-        recency_flag: "CURRENT",
-        highlight_tier: "exact",
+        recency_flag:      "CURRENT",
+        highlight_tier:    "exact",
         exact_quotes: [
             "Artificial intelligence is not a replacement for human intelligence; it is a tool that enhances and extends human capabilities.",
             "AI will not replace human workers in the broader sense; rather, it will serve as an assistive technology that enables humans to work more efficiently, make better decisions, and focus on higher-value tasks that require distinctly human skills."

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RRL Catalyst — Google Docs Extension</title>
+  <title>Verifai — Google Docs Extension</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
 </head>
 <body>
@@ -48,10 +48,10 @@
       </svg>
     </button>
 
-    <!-- Gemini + RRL Catalyst buttons -->
+    <!-- Gemini + Verifai buttons -->
     <div class="tool-group">
       <button class="gemini-btn"
-              onclick="showToast('Gemini searches your Drive. RRL Catalyst searches the Global Academic Web!')">
+              onclick="showToast('Gemini searches your Drive. Verifai searches the Global Academic Web!')">
         <svg viewBox="0 0 24 24" fill="none">
           <path d="M12 2C12 2 13.5 8.5 18 12C13.5 15.5 12 22 12 22C12 22 10.5 15.5 6 12C10.5 8.5 12 2 12 2Z"
                 fill="url(#gemini-grad)"/>
@@ -72,7 +72,7 @@
             <path d="M2.5 7h9M7 2.5l4.5 4.5L7 11.5"
                   stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          RRL Catalyst
+          Verifai
         </button>
         <!-- Orange dot — visible when a step is in progress -->
         <div class="rrl-step-dot" id="step-dot"></div>
@@ -202,14 +202,14 @@
       </div>
     </div><!-- /doc-page -->
 
-    <!-- Floating "Verify with RRL Catalyst" button — appears on text selection -->
+    <!-- Floating "Verify with Verifai" button — appears on text selection -->
     <button id="float-btn" onclick="lockClaim()">
       <svg style="width:12px;height:12px;flex-shrink:0"
            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
         <polyline points="22 4 12 14.01 9 11.01"/>
       </svg>
-      Verify with RRL Catalyst
+      Verify with Verifai
     </button>
   </div><!-- /doc-scroll -->
 
@@ -226,7 +226,8 @@
           <path d="M3 9h12M9 3l6 6-6 6"
                 stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        RRL Catalyst
+        Verifai
+
       </div>
       <button class="panel-close" onclick="togglePanel()">×</button>
     </div>
@@ -255,7 +256,7 @@
       <div id="view-welcome" class="welcome">
         <div class="welcome-title">Verify claims with the Global Academic Web</div>
         <div class="welcome-sub">
-          Unlike Gemini, RRL Catalyst searches <strong>external research papers</strong>
+          Unlike Gemini, Verifai searches <strong>external research papers</strong>
           — not just your Drive.
         </div>
         <div class="welcome-steps">
@@ -291,7 +292,7 @@
         <div class="discovery-panel">
           <div class="disc-gemini-note">
             <strong>Why not Gemini?</strong> Gemini searches your internal Drive.
-            RRL Catalyst searches the <strong>Global Academic Web</strong>
+            Verifai searches the <strong>Global Academic Web</strong>
             — peer-reviewed journals, research papers, and verified external sources.
           </div>
           <div class="disc-header">
@@ -300,10 +301,9 @@
             </svg>
             Suggested Sources
           </div>
-          <!-- Searching spinner -->
           <div class="disc-searching" id="disc-searching">
             <div class="spin"></div>
-            Searching the Global Academic Web…
+            <span id="disc-status-text">Searching the Global Academic Web…</span>
           </div>
           <!-- Source cards injected by discovery.js -->
           <div id="source-list" style="display:none"></div>
