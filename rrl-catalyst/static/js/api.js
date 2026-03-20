@@ -1,31 +1,28 @@
 /* ============================================================
-   api.js — Anthropic API calls
-   All fetch() calls to claude-sonnet-4-20250514 live here.
+   api.js — Gemini API calls (via Flask proxy)
+   All requests go through /api/gemini to keep the key safe.
    ============================================================ */
 
 "use strict";
 
-const API_URL = "https://api.anthropic.com/v1/messages";
-const MODEL   = "claude-sonnet-4-20250514";
-
 /**
- * Call the Anthropic messages API.
+ * Call the Gemini API via the Flask proxy.
  * @param {string} prompt
  * @param {number} maxTokens
  * @returns {Promise<string>} raw text response
  */
 async function callClaude(prompt, maxTokens = 1400) {
-    const res = await fetch(API_URL, {
+    const res = await fetch("/api/gemini", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            model: MODEL,
-            max_tokens: maxTokens,
-            messages: [{ role: "user", content: prompt }]
-        })
+        body: JSON.stringify({ prompt, max_tokens: maxTokens })
     });
+    if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: res.statusText }));
+        throw new Error(err.error || "Gemini API request failed");
+    }
     const data = await res.json();
-    return data.content.map(b => b.text || "").join("");
+    return data.text;
 }
 
 /**
