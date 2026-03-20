@@ -1,6 +1,4 @@
-# RRL Catalyst: Deep Search Engine
-
-RRL Catalyst is a prototype search engine designed to help students analyze and verify claims using real open-access academic papers.
+# RRL Catalyst API Integration
 
 ## Project Structure
 
@@ -56,16 +54,6 @@ This project uses the **Google Gemini API** for semantic search and claim verifi
    # OR on some systems: py app.py
    ```
 4. Open your web browser and navigate to `http://127.0.0.1:5000`.
-
-## How to Use
-
-1. **Highlight** any sentence in the document.
-2. Click the **"Verify with RRL Catalyst"** floating button.
-3. **Browse** the discovered sources (simulated real open-access papers).
-4. **Select** a source → click "Use Selected Source".
-5. Open the PDF link → **Ctrl+A → Copy → Paste** the text into the provided text area.
-6. Click **▶ Analyze**.
-7. Review the **Verification**, **Source View** (highlighted), and **Synthesis** tabs.
 
 ## Notes
 
