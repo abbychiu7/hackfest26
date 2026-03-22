@@ -23,7 +23,7 @@ async function runGrounding() {
     btn.classList.add("loading");
     btn.disabled = true;
     setStep(3);
-    showView("skeleton");
+    document.getElementById("verifai-particles-overlay").classList.add("active");
 
     const truncated  = sourceText.length > 14000 ? sourceText.slice(0, 14000) + "…" : sourceText;
     const sourceRef  = SELECTED_SOURCE ? SELECTED_SOURCE.title : "provided source";
@@ -42,6 +42,7 @@ async function runGrounding() {
 
     btn.classList.remove("loading");
     btn.disabled = false;
+    document.getElementById("verifai-particles-overlay").classList.remove("active");
 }
 
 /** Fallback demo verification result. */

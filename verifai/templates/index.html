@@ -2,105 +2,104 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Verifai</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>VerifAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
 
-  <!-- ══════════════════════════════════════════════════════════
-     GOOGLE DOCS MENUBAR
+<!-- ══════════════════════════════════════════════════════════
+   GOOGLE DOCS MENUBAR
 ══════════════════════════════════════════════════════════ -->
-  <div class=" menubar">
+<div class="menubar">
     <svg class="docs-icon" viewBox="0 0 30 30" fill="none">
-      <rect width="30" height="30" rx="4" fill="#4285F4" />
-      <rect x="7" y="7" width="16" height="2" rx="1" fill="white" />
-      <rect x="7" y="12" width="16" height="2" rx="1" fill="white" />
-      <rect x="7" y="17" width="10" height="2" rx="1" fill="white" />
+        <rect width="30" height="30" rx="4" fill="#4285F4"/>
+        <rect x="7" y="7" width="16" height="2" rx="1" fill="white"/>
+        <rect x="7" y="12" width="16" height="2" rx="1" fill="white"/>
+        <rect x="7" y="17" width="10" height="2" rx="1" fill="white"/>
     </svg>
 
     <span class="doc-name">Animo.io | Practical Research 67</span>
 
     <div class="title-icons">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <polygon
-          points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-      </svg>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" />
-      </svg>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <polyline points="23 7 16 12 23 17 23 7" />
-        <rect x="1" y="5" width="15" height="14" rx="2" />
-      </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="23 7 16 12 23 17 23 7"/>
+            <rect x="1" y="5" width="15" height="14" rx="2"/>
+        </svg>
     </div>
 
     <div class="menubar-right">
-      <!-- History icon -->
-      <button class="icon-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="12" cy="12" r="10" />
-          <polyline points="12 6 12 12 16 14" />
-        </svg>
-      </button>
-      <!-- Comment icon -->
-      <button class="icon-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-        </svg>
-      </button>
-
-      <!-- Verifai Buttons -->
-      <div class="tool-group">
-
-        <div class="rrl-trigger">
-          <button class="rrl-btn" id="rrl-btn" onclick="togglePanel()">
-            <svg viewBox="0 0 14 14" fill="none">
-              <rect width="14" height="14" rx="2.5" fill="#1A73E8" />
-              <path d="M2.5 7h9M7 2.5l4.5 4.5L7 11.5" stroke="white" stroke-width="1.4" stroke-linecap="round"
-                stroke-linejoin="round" />
+        <button class="icon-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
             </svg>
-            Verifai
-          </button>
-          <!-- Orange dot — visible when a step is in progress -->
-          <div class="rrl-step-dot" id="step-dot"></div>
+        </button>
+        <button class="icon-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+        </button>
+
+        <div class="tool-group">
+            <button class="gemini-btn">
+                <svg viewBox="0 0 24 24" fill="#496FB6">
+                    <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+                </svg>
+            </button>
+
+            <div class="rrl-trigger">
+                <button class="rrl-btn" id="rrl-main-btn" onclick="showVerifaiOverview()">
+                    <div class="btn-bg-shape"></div>
+                    <svg class="verifai-logo-svg" viewBox="0 0 24 24">
+                        <defs>
+                            <linearGradient id="birdGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#496FB6; stop-opacity:1"/>
+                                <stop offset="100%" style="stop-color:#A5D7B8; stop-opacity:1"/>
+                            </linearGradient>
+                        </defs>
+                        <path class="bird-path" d="M 5 14 C 8 13 11 14 12.5 17 C 14 11 17 7 21 6 C 16 9 14 15 12.5 21 C 11 16 8 15 5 14 Z"/>
+                    </svg>
+                </button>
+                <div class="rrl-step-dot" id="step-dot"></div>
+            </div>
         </div>
-      </div>
 
-      <button class="share-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="11" width="18" height="11" rx="2" />
-          <path d="M7 11V7a5 5 0 0110 0v4" />
-        </svg>
-        Share
-      </button>
-      <div class="avatar">A</div>
+        <button class="share-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+            Share
+        </button>
+        <div class="avatar">A</div>
     </div>
-  </div>
+</div>
 
-  <!-- ══════════════════════════════════════════════════════════
-     FORMAT BAR
+<!-- ══════════════════════════════════════════════════════════
+   FORMAT BAR
 ══════════════════════════════════════════════════════════ -->
-  <div class="fmtbar">
+<div class="fmtbar">
     <button class="fb">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px">
-        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-      </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+        </svg>
     </button>
     <div class="fsep"></div>
-    <select class="fs">
-      <option>Normal text</option>
-    </select>
+    <select class="fs"><option>Normal text</option></select>
     <div class="fsep"></div>
-    <select class="fs" style="min-width:74px">
-      <option>Poppins</option>
-    </select>
+    <select class="fs" style="min-width:74px"><option>Poppins</option></select>
     <div class="fsep"></div>
     <button class="fb">−</button>
-    <input class="fn" value="11" readonly />
+    <input class="fn" value="11" readonly/>
     <button class="fb">+</button>
     <div class="fsep"></div>
     <button class="fb" style="font-weight:700;font-size:13px">B</button>
@@ -108,457 +107,467 @@
     <button class="fb" style="text-decoration:underline;font-size:13px">U</button>
     <div class="fsep"></div>
     <button class="fb" style="font-size:12px">≡</button>
-  </div>
+</div>
 
-  <!-- ══════════════════════════════════════════════════════════
-     MAIN LAYOUT
+<!-- ══════════════════════════════════════════════════════════
+   MAIN LAYOUT
 ══════════════════════════════════════════════════════════ -->
-  <div class="main">
+<div class="main">
 
     <!-- ── Left: Document Outline Sidebar ── -->
     <div class="doc-sidebar">
-      <div class="dst">
-        Document tabs
-        <svg style="width:16px;height:16px;cursor:pointer;color:var(--ink3)" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2">
-          <line x1="12" y1="5" x2="12" y2="19" />
-          <line x1="5" y1="12" x2="19" y2="12" />
-        </svg>
-      </div>
-      <div class="dtab" id="tab0" onclick="switchDoc(0)" style="margin-bottom: 5px; background: var(--blue-light);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2">
-          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-          <polyline points="14 2 14 8 20 8" />
-        </svg>
-        <span class="dtab-name" style="font-size:11px;">SOCIAL MEDIA INFLUENCE</span>
-        <span class="dtab-menu">⋮</span>
-      </div>
-      <div class="dtab" id="tab1" onclick="switchDoc(1)" style="margin-bottom: 5px; background: transparent;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2">
-          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-          <polyline points="14 2 14 8 20 8" />
-        </svg>
-        <span class="dtab-name" style="font-size:11px;">SLEEP & COGNITION</span>
-        <span class="dtab-menu">⋮</span>
-      </div>
-      <div class="dtab" id="tab2" onclick="switchDoc(2)" style="background: transparent;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2">
-          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-          <polyline points="14 2 14 8 20 8" />
-        </svg>
-        <span class="dtab-name" style="font-size:11px;">GAMIFICATION EFFECTS</span>
-        <span class="dtab-menu">⋮</span>
-      </div>
-      <p class="dsidebar-hint">Headings you add to the document will appear here.</p>
+        <div class="dst">
+            Document tabs
+            <svg style="width:16px;height:16px;cursor:pointer;color:var(--ink3)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+        </div>
+        <div class="dtab" id="tab0" onclick="switchDoc(0)" style="margin-bottom:5px;background:var(--blue-light);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            <span class="dtab-name" style="font-size:11px;">SOCIAL MEDIA INFLUENCE</span>
+            <span class="dtab-menu">⋮</span>
+        </div>
+        <div class="dtab" id="tab1" onclick="switchDoc(1)" style="margin-bottom:5px;background:transparent;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            <span class="dtab-name" style="font-size:11px;">SLEEP & COGNITION</span>
+            <span class="dtab-menu">⋮</span>
+        </div>
+        <div class="dtab" id="tab2" onclick="switchDoc(2)" style="background:transparent;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            <span class="dtab-name" style="font-size:11px;">GAMIFICATION EFFECTS</span>
+            <span class="dtab-menu">⋮</span>
+        </div>
+        <p class="dsidebar-hint">Headings you add to the document will appear here.</p>
     </div>
 
     <!-- ── Centre: Google Doc Page ── -->
     <div class="doc-scroll" id="doc-scroll">
-      <div class="doc-page" id="doc-page">
+        <div class="doc-page" id="doc-page">
 
-        <!-- Right-gutter action icons (mirrors real Google Docs UI) -->
-        <div class="doc-gutter">
-          <button class="gb" title="Edit">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
-            </svg>
-          </button>
-          <button class="gb" title="Add comment">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-            </svg>
-          </button>
-          <button class="gb" title="Emoji">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-              <line x1="9" y1="9" x2="9.01" y2="9" />
-              <line x1="15" y1="9" x2="15.01" y2="9" />
-            </svg>
-          </button>
-          <button class="gb" title="Suggest">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <path d="M9 9h6M9 12h6M9 15h4" />
-            </svg>
-          </button>
-        </div>
+            <div class="doc-gutter">
+                <button class="gb" title="Edit">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                    </svg>
+                </button>
+                <button class="gb" title="Add comment">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                    </svg>
+                </button>
+                <button class="gb" title="Emoji">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                        <line x1="9" y1="9" x2="9.01" y2="9"/>
+                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                    </svg>
+                </button>
+                <button class="gb" title="Suggest">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <path d="M9 9h6M9 12h6M9 15h4"/>
+                    </svg>
+                </button>
+            </div>
 
-        <!-- Document content — students highlight text here -->
-        <p class="doc-page-title">
-          Title: <strong>Chapter 1: The Impact of Social Media on Academic Performance Among High School
-            Students</strong>
-        </p>
-        <div class="doc-body" id="doc-body">
-          <p><strong>Chapter 1: Introduction</strong></p>
-          <p>In the contemporary digital era, social media platforms have fundamentally altered the landscape of
-            adolescent communication, socialization, and information consumption. The pervasive integration of these
-            technologies into the daily routines of high school students is unprecedented. Given this ubiquity,
-            understanding how platforms like Instagram, TikTok, and Snapchat intersect with educational outcomes has
-            become a critical area of investigation.</p>
-          <p>Proponents of social media argue that it fosters collaborative learning, provides access to diverse
-            perspectives, and supports peer-to-peer academic engagement. Conversely, critics suggest a myriad of
-            negative consequences. Anecdotal and preliminary survey data indicates that excessive social media usage
-            strongly correlates with reduced study time and increased distractibility.</p>
-          <p>Furthermore, psychological literature points to the disruptive effects of continuous digital notifications
-            on sustained attention span and deep cognitive processing, both of which are essential for academic success.
-            Secondary effects, such as disrupted sleep patterns due to late-night screen time, also contribute
-            detrimentally to a student's daytime alertness and performance.</p>
-          <p>Therefore, this study aims to systematically investigate the specific behavioral mechanisms through which
-            daily social media consumption influences high school students' academic performance, differentiating
-            between recreational scrolling and academically purposeful digital interactions.</p>
-        </div>
-      </div><!-- /doc-page -->
+            <p class="doc-page-title">
+                Title: <strong>Chapter 1: The Impact of Social Media on Academic Performance Among High School Students</strong>
+            </p>
+            <div class="doc-body" id="doc-body">
+                <p><strong>Chapter 1: Introduction</strong></p>
+                <p>In the contemporary digital era, social media platforms have fundamentally altered the landscape of adolescent communication, socialization, and information consumption.</p>
+            </div>
+        </div><!-- /doc-page -->
 
-      <!-- Floating "Verify with Verifai" button — appears on text selection -->
-      <button id="float-btn" onclick="lockClaim()">
-        <svg style="width:12px;height:12px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2.5">
-          <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-          <polyline points="22 4 12 14.01 9 11.01" />
-        </svg>
-        Verifai
-      </button>
+        <!-- Floating Verify Button -->
+        <button id="float-btn" onclick="lockClaim()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <defs>
+                    <linearGradient id="floatBirdGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#7ecfef"/>
+                        <stop offset="100%" style="stop-color:#a8e6d0"/>
+                    </linearGradient>
+                </defs>
+                <path d="M 5 14 C 8 13 11 14 12.5 17 C 14 11 17 7 21 6 C 16 9 14 15 12.5 21 C 11 16 8 15 5 14 Z" fill="url(#floatBirdGrad)"/>
+            </svg>
+            VerifAI
+        </button>
     </div><!-- /doc-scroll -->
 
     <!-- ══════════════════════════════════════════════════════
-       SIDE PANEL (mirrors Google Docs / Gemini panel style)
-  ══════════════════════════════════════════════════════ -->
+       SIDE PANEL
+    ══════════════════════════════════════════════════════ -->
     <div class="side-panel" id="side-panel">
 
-      <!-- Panel header -->
-      <div class="panel-head">
-        <div class="panel-logo">
-          <svg viewBox="0 0 18 18" fill="none">
-            <rect width="18" height="18" rx="3" fill="#1A73E8" />
-            <path d="M3 9h12M9 3l6 6-6 6" stroke="white" stroke-width="1.6" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-          Verifai
-
-        </div>
-        <button class="panel-close" onclick="togglePanel()">×</button>
-      </div>
-
-      <!-- 3-step progress indicator (hidden on welcome screen) -->
-      <div class="step-bar" id="step-bar" style="display:none">
-        <div class="step-node">
-          <div class="step-circle" id="sc1">1</div>
-          <span class="step-label" id="sl1">Discover</span>
-        </div>
-        <div class="step-line" id="line1"></div>
-        <div class="step-node">
-          <div class="step-circle" id="sc2">2</div>
-          <span class="step-label" id="sl2">Select</span>
-        </div>
-        <div class="step-line" id="line2"></div>
-        <div class="step-node">
-          <div class="step-circle" id="sc3">3</div>
-          <span class="step-label" id="sl3">Ground</span>
-        </div>
-      </div>
-
-      <div class="panel-body" id="panel-body">
-
-        <!-- ── VIEW 0: Welcome / How-to ── -->
-        <div id="view-welcome" class="welcome">
-          <div class="welcome-title">Verify your claims with the Academic Internet</div>
-          <div class="welcome-steps">
-            <div class="ws">
-              <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 20h9" />
-                <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
-              </svg>
-              <div class="ws-text"><strong>Highlight</strong> any claim in the document</div>
-            </div>
-            <div class="ws">
-              <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <div class="ws-text"><strong>Discover</strong> — Verifai searches the Academic Internet</div>
-            </div>
-            <div class="ws">
-              <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 11l3 3L22 4" />
-              </svg>
-              <div class="ws-text"><strong>Select</strong> the most relevant source</div>
-            </div>
-            <div class="ws">
-              <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-              </svg>
-              <div class="ws-text"><strong>Ground</strong> — word-for-word verification + RRL synthesis</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── VIEW 1: Discovery (source cards) ── -->
-        <div id="view-discovery" style="display:none">
-          <div class="discovery-panel">
-            <div class="disc-gemini-note">
-              <strong>Verifai</strong> searches the <strong>Academic Internet</strong>
-              — peer-reviewed journals, research papers, and verified external sources.
-            </div>
-            <div class="disc-header">
-              <div class="disc-header-left">
-                <i class="bi bi-journal-text"></i>
-                <span>Suggested Sources</span>
-              </div>
-
-              <div class="disc-header-right">
-                <span>Sort by</span>
-                <i class="bi bi-sort-down-alt"></i>
-              </div>
-            </div>
-
-            <div class="disc-searching" id="disc-searching">
-              <div class="spin"></div>
-              <span id="disc-status-text">Searching far and wide...</span>
-            </div>
-            <!-- Source cards injected by discovery.js -->
-            <div id="source-list" style="display:none"></div>
-            <!-- Use source button — visible after card selection -->
-            <button id="btn-use-source" onclick="goToGrounding()" style="display:none;width:100%;background:var(--blue);color:white;border:none;
-                         border-radius:20px;padding:7px;font-family:var(--font);font-size:12px;
-                         font-weight:500;cursor:pointer;margin-top:4px;transition:background .2s">
-              Use Selected Source →
-            </button>
-          </div>
-        </div>
-
-        <!-- ── VIEW 2: Grounding (paste paper text) ── -->
-        <div id="view-grounding" style="display:none">
-          <div class="grounding-panel">
-            <div class="selected-source-pill" id="sel-source-pill">
-              <svg class="ssp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-              </svg>
-              <span class="ssp-title" id="sel-source-title">—</span>
-              <span class="ssp-change" onclick="goBack()">← Change</span>
-            </div>
-
-            <div class="paste-label">Paste Full Paper Text</div>
-            <p class="paste-hint">
-              Open the PDF → <strong>Ctrl+A</strong> → Copy → Paste below.
-              Every word you paste is what gets highlighted word-for-word in Source View.
-            </p>
-            <textarea class="ta" id="source-input" rows="5" placeholder="Paste the full paper text here…"
-              onfocus="this.style.borderColor='var(--blue)'"
-              onblur="this.style.borderColor='var(--border2)'"></textarea>
-            <div class="paste-footer">
-              <span id="fetch-status"></span>
-              <button class="btn-go" id="analyze-btn" onclick="runGrounding()">
-                <div class="sp"></div>
-                <span class="bt">▶ Analyze</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── SKELETON loader ── -->
-        <div id="view-skeleton" class="skel-wrap">
-          <div class="sk" style="width:55%;height:14px;margin-bottom:12px"></div>
-          <div class="sk" style="width:100%"></div>
-          <div class="sk" style="width:85%"></div>
-          <div class="sk" style="width:70%;margin-bottom:14px"></div>
-          <div class="sk" style="width:42%;height:13px;margin-bottom:9px"></div>
-          <div class="sk" style="width:100%;height:48px;border-radius:6px;margin-bottom:12px"></div>
-          <div class="sk" style="width:48%;height:13px;margin-bottom:9px"></div>
-          <div class="sk" style="width:100%;height:65px;border-radius:6px"></div>
-        </div>
-
-        <!-- ── VIEW 3: Results ── -->
-        <div id="view-results" class="results-wrap">
-
-          <!-- Selected claim pill -->
-          <div class="claim-pill">
-            <div class="cp-lbl">Verified Claim</div>
-            <div class="cp-txt" id="r-claim"></div>
-          </div>
-
-          <!-- Status chip (tier + recency) -->
-          <div class="chip-row">
-            <div class="chip">
-              <div class="chip-dot"></div>
-              <span id="r-chip">—</span>
-            </div>
-          </div>
-
-          <!-- Tabs: Verification / Source View / Synthesis -->
-          <div class="tabs">
-            <button class="tb active" onclick="switchTab('verification', this)">Verification</button>
-            <button class="tb" onclick="switchTab('sources', this)">Source View</button>
-            <button class="tb" onclick="switchTab('synthesis', this)">Synthesis</button>
-          </div>
-
-          <!-- ── Tab: Verification ── -->
-          <div class="tp active" id="tab-verification">
-            <div class="sec">
-              <div class="slbl">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-                Credibility Status
-              </div>
-              <div class="sbadge credible" id="r-badge">
-                <div class="bdot"></div>
-                <span id="r-status">HIGHLY CREDIBLE</span>
-              </div>
-              <div class="score-row">
-                <span class="slb">Credibility</span>
-                <div class="str">
-                  <div class="stf" id="r-score-fill" style="width:0%"></div>
+        <!-- Panel header -->
+        <div class="panel-head">
+            <div class="panel-logo">
+                <div class="panel-logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <defs>
+                            <linearGradient id="logoGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7ecfef"/>
+                                <stop offset="100%" style="stop-color:#a8e6d0"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M 4 13 C 7 12 10 13 11.5 16 C 13 10 16 6 21 5 C 16 8 13.5 14 11.5 20 C 10 15 7 14 4 13 Z" fill="url(#logoGrad3)"/>
+                    </svg>
                 </div>
-                <span class="sval" id="r-score-val">—</span>
-              </div>
+                <span class="panel-logo-text">VerifAI</span>
             </div>
-            <div class="sec">
-              <div class="slbl">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="12" y1="8" x2="12" y2="12" />
-                  <line x1="12" y1="16" x2="12.01" y2="16" />
+            <button class="panel-close" onclick="togglePanel()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
                 </svg>
-                AI Context Note
-              </div>
-              <div class="ibox" id="r-explanation"></div>
-            </div>
-            <div class="sec">
-              <div class="slbl">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  style="width:11px;height:11px">
-                  <path d="M9 11l3 3L22 4" />
-                  <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
-                </svg>
-                Credibility Rubric
-              </div>
-              <div style="font-size:10px;color:var(--ink3);margin-bottom:7px;line-height:1.5">
-                How the engine judges a source. Use this to evaluate sources yourself.
-              </div>
-              <div id="rubric-rows"></div>
-            </div>
-          </div>
+            </button>
+        </div>
 
-          <!-- ── Tab: Source View ── -->
-          <div class="tp" id="tab-sources">
-            <!-- POI banner — tier-aware, always populated -->
-            <div id="poi-banner" style="display:none;margin:8px 14px 0;border-radius:6px;padding:8px 10px;
-                      font-size:11px;line-height:1.55;border-left:3px solid #ccc">
-              <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px">
-                <span id="poi-icon" style="font-size:13px"></span>
-                <span id="poi-tier-label" style="font-size:9px;font-weight:600;
-                                               letter-spacing:.6px;text-transform:uppercase"></span>
-              </div>
-              <div id="poi-note" style="color:var(--ink2)"></div>
+        <!-- 3-step progress indicator -->
+        <div class="step-bar" id="step-bar" style="display:none">
+            <div class="step-node">
+                <div class="step-circle" id="sc1">1</div>
+                <span class="step-label" id="sl1">Discover</span>
+            </div>
+            <div class="step-line" id="line1"></div>
+            <div class="step-node">
+                <div class="step-circle" id="sc2">2</div>
+                <span class="step-label" id="sl2">Select</span>
+            </div>
+            <div class="step-line" id="line2"></div>
+            <div class="step-node">
+                <div class="step-circle" id="sc3">3</div>
+                <span class="step-label" id="sl3">Ground</span>
+            </div>
+        </div>
+
+        <!-- Panel body -->
+        <div class="panel-body" id="panel-body">
+
+            <!-- ── VIEW 0: Welcome ── -->
+            <div id="view-welcome" class="welcome">
+                <div class="welcome-title">Verify your claims with the Academic Internet</div>
+                <div class="welcome-sub">Highlight anything — we find the source.</div>
+
+                <div class="welcome-steps">
+                    <div class="ws">
+                        <div class="ws-icon-wrap">
+                            <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                            </svg>
+                        </div>
+                        <div class="ws-content">
+                            <div class="ws-label">Highlight</div>
+                            <div class="ws-desc">Select any claim in your document</div>
+                        </div>
+                    </div>
+                    <div class="ws-divider"></div>
+
+                    <div class="ws">
+                        <div class="ws-icon-wrap">
+                            <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                        </div>
+                        <div class="ws-content">
+                            <div class="ws-label">Discover</div>
+                            <div class="ws-desc">We search peer-reviewed journals</div>
+                        </div>
+                    </div>
+                    <div class="ws-divider"></div>
+
+                    <div class="ws">
+                        <div class="ws-icon-wrap">
+                            <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 11l3 3L22 4"/>
+                            </svg>
+                        </div>
+                        <div class="ws-content">
+                            <div class="ws-label">Select</div>
+                            <div class="ws-desc">Pick the most relevant source</div>
+                        </div>
+                    </div>
+                    <div class="ws-divider"></div>
+
+                    <div class="ws">
+                        <div class="ws-icon-wrap">
+                            <svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </div>
+                        <div class="ws-content">
+                            <div class="ws-label">Ground</div>
+                            <div class="ws-desc">Word-for-word verification + RRL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="welcome-footer">
+                    <div class="welcome-footer-dot"></div>
+                    <div class="welcome-footer-text">Sources from peer-reviewed journals only</div>
+                </div>
             </div>
 
-            <div class="paper-head" style="margin-top:6px">
-              <span class="phlbl">Full Paper</span>
-              <div style="display:flex;align-items:center;gap:5px">
-                <span id="hl-count"></span>
-                <button id="next-hl" onclick="nextHL()">↓ Next</button>
-              </div>
+            <!-- ── VIEW 1: Discovery ── -->
+            <div id="view-discovery" style="display:none">
+                <div class="discovery-panel">
+                    <div class="disc-gemini-note">
+                        <strong>VerifAI</strong> searches the <strong>Academic Internet</strong>
+                        — peer-reviewed journals, research papers, and verified external sources.
+                    </div>
+                    <div class="disc-header">
+                        <div class="disc-header-left">
+                            <i class="bi bi-journal-text"></i>
+                            <span>Suggested Sources</span>
+                        </div>
+                        <div class="disc-header-right">
+                            <span>Sort by</span>
+                            <i class="bi bi-sort-down-alt"></i>
+                        </div>
+                    </div>
+                    <div class="disc-searching" id="disc-searching">
+                        <div class="spin"></div>
+                        <span id="disc-status-text">Searching far and wide...</span>
+                    </div>
+                    <div id="source-list" style="display:none"></div>
+                    <button id="btn-use-source" onclick="goToGrounding()" style="display:none;width:100%;background:var(--blue);color:white;border:none;border-radius:20px;padding:7px;font-family:var(--font);font-size:12px;font-weight:500;cursor:pointer;margin-top:4px;transition:background .2s">
+                        Use Selected Source →
+                    </button>
+                </div>
             </div>
-            <!-- Full paper text injected by render.js -->
-            <div id="paper-body">
-              <span style="color:var(--ink3);font-style:italic;font-size:11px;
-                         padding:8px 14px;display:block">
-                Run analysis to load.
-              </span>
-            </div>
-          </div>
 
-          <!-- ── Tab: Synthesis ── -->
-          <div class="tp" id="tab-synthesis">
-            <div class="sec">
-              <div class="slbl">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
-                </svg>
-                RRL Synthesis
-              </div>
-              <div class="synbox" id="r-synthesis"></div>
-              <button class="btn-insert" onclick="showToast('✅ Inserted into Google Doc!')">
-                <svg style="width:12px;height:12px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
-                  <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
-                  <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
-                </svg>
-                Insert into Google Doc
-              </button>
+            <!-- ── VIEW 2: Grounding ── -->
+            <div id="view-grounding" style="display:none">
+                <div class="grounding-panel">
+                    <div class="selected-source-pill" id="sel-source-pill">
+                        <svg class="ssp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        <span class="ssp-title" id="sel-source-title">—</span>
+                        <span class="ssp-change" onclick="goBack()">← Change</span>
+                    </div>
+                    <div class="paste-label">Paste Full Paper Text</div>
+                    <p class="paste-hint">
+                        Open the PDF → <strong>Ctrl+A</strong> → Copy → Paste below.
+                        Every word you paste is what gets highlighted word-for-word in Source View.
+                    </p>
+                    <div class="input-area-wrapper" id="input-area-wrapper">
+                        <textarea class="ta" id="source-input" rows="5" placeholder="Paste the full paper text here…"
+                                  onfocus="this.style.borderColor='var(--blue)'"
+                                  onblur="this.style.borderColor='var(--border2)'"></textarea>
+                        <div class="verifai-particles-overlay" id="verifai-particles-overlay">
+                            <div class="particles-container">
+                                <div class="particle p1"></div>
+                                <div class="particle p2"></div>
+                                <div class="particle p3"></div>
+                                <div class="particle p4"></div>
+                                <div class="particle p5"></div>
+                                <div class="particle p6"></div>
+                            </div>
+                            <div class="glowing-logo">
+                                <svg viewBox="0 0 24 24">
+                                    <path class="bird-path-loading" fill="url(#birdGradient)"
+                                          d="M 5 14 C 8 13 11 14 12.5 17 C 14 11 17 7 21 6 C 16 9 14 15 12.5 21 C 11 16 8 15 5 14 Z"/>
+                                </svg>
+                            </div>
+                            <div class="verifai-text">verifAI</div>
+                        </div>
+                    </div>
+                    <div class="paste-footer">
+                        <span id="fetch-status"></span>
+                        <button class="btn-go" id="analyze-btn" onclick="runGrounding()">
+                            <div class="sp"></div>
+                            <span class="bt">▶ Analyze</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="sec">
-              <div class="slbl">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-                </svg>
-                APA 7th Edition
-              </div>
-              <div class="citebox" id="r-citation"></div>
-              <button class="btn-cite" onclick="copyCitation()">
-                <svg style="width:12px;height:12px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" />
-                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                </svg>
-                Copy Citation
-              </button>
+
+            <!-- ── SKELETON loader ── -->
+            <div id="view-skeleton" class="skel-wrap">
+                <div class="sk" style="width:55%;height:14px;margin-bottom:12px"></div>
+                <div class="sk" style="width:100%"></div>
+                <div class="sk" style="width:85%"></div>
+                <div class="sk" style="width:70%;margin-bottom:14px"></div>
+                <div class="sk" style="width:42%;height:13px;margin-bottom:9px"></div>
+                <div class="sk" style="width:100%;height:48px;border-radius:6px;margin-bottom:12px"></div>
+                <div class="sk" style="width:48%;height:13px;margin-bottom:9px"></div>
+                <div class="sk" style="width:100%;height:65px;border-radius:6px"></div>
             </div>
-          </div>
 
-        </div><!-- /view-results -->
+            <!-- ── VIEW 3: Results ── -->
+            <div id="view-results" class="results-wrap">
+                <div class="claim-pill">
+                    <div class="cp-lbl">Verified Claim</div>
+                    <div class="cp-txt" id="r-claim"></div>
+                </div>
+                <div class="chip-row">
+                    <div class="chip">
+                        <div class="chip-dot"></div>
+                        <span id="r-chip">—</span>
+                    </div>
+                </div>
+                <div class="tabs">
+                    <button class="tb active" onclick="switchTab('verification', this)">Verification</button>
+                    <button class="tb" onclick="switchTab('sources', this)">Source View</button>
+                    <button class="tb" onclick="switchTab('synthesis', this)">Synthesis</button>
+                </div>
 
-      </div><!-- /panel-body -->
+                <!-- Tab: Verification -->
+                <div class="tp active" id="tab-verification">
+                    <div class="sec">
+                        <div class="slbl">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            Credibility Status
+                        </div>
+                        <div class="sbadge credible" id="r-badge">
+                            <div class="bdot"></div>
+                            <span id="r-status">HIGHLY CREDIBLE</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="slb">Credibility</span>
+                            <div class="str"><div class="stf" id="r-score-fill" style="width:0%"></div></div>
+                            <span class="sval" id="r-score-val">—</span>
+                        </div>
+                    </div>
+                    <div class="sec">
+                        <div class="slbl">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                            AI Context Note
+                        </div>
+                        <div class="ibox" id="r-explanation"></div>
+                    </div>
+                    <div class="sec">
+                        <div class="slbl">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:11px;height:11px">
+                                <path d="M9 11l3 3L22 4"/>
+                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                            </svg>
+                            Credibility Rubric
+                        </div>
+                        <div style="font-size:10px;color:var(--ink3);margin-bottom:7px;line-height:1.5">
+                            How the engine judges a source. Use this to evaluate sources yourself.
+                        </div>
+                        <div id="rubric-rows"></div>
+                    </div>
+                </div>
+
+                <!-- Tab: Source View -->
+                <div class="tp" id="tab-sources">
+                    <div id="poi-banner" style="display:none;margin:8px 14px 0;border-radius:6px;padding:8px 10px;font-size:11px;line-height:1.55;border-left:3px solid #ccc">
+                        <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px">
+                            <span id="poi-icon" style="font-size:13px"></span>
+                            <span id="poi-tier-label" style="font-size:9px;font-weight:600;letter-spacing:.6px;text-transform:uppercase"></span>
+                        </div>
+                        <div id="poi-note" style="color:var(--ink2)"></div>
+                    </div>
+                    <div class="paper-head" style="margin-top:6px">
+                        <span class="phlbl">Full Paper</span>
+                        <div style="display:flex;align-items:center;gap:5px">
+                            <span id="hl-count"></span>
+                            <button id="next-hl" onclick="nextHL()">↓ Next</button>
+                        </div>
+                    </div>
+                    <div id="paper-body">
+                        <span style="color:var(--ink3);font-style:italic;font-size:11px;padding:8px 14px;display:block">
+                            Run analysis to load.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Tab: Synthesis -->
+                <div class="tp" id="tab-synthesis">
+                    <div class="sec">
+                        <div class="slbl">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                            </svg>
+                            RRL Synthesis
+                        </div>
+                        <div class="synbox" id="r-synthesis"></div>
+                        <button class="btn-insert" onclick="showToast('✅ Inserted into Google Doc!')">
+                            <svg style="width:12px;height:12px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                            Insert into Google Doc
+                        </button>
+                    </div>
+                    <div class="sec">
+                        <div class="slbl">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+                            </svg>
+                            APA 7th Edition
+                        </div>
+                        <div class="citebox" id="r-citation"></div>
+                        <button class="btn-cite" onclick="copyCitation()">
+                            <svg style="width:12px;height:12px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                            </svg>
+                            Copy Citation
+                        </button>
+                    </div>
+                </div>
+
+            </div><!-- /view-results -->
+
+        </div><!-- /panel-body -->
     </div><!-- /side-panel -->
 
-  </div><!-- /main -->
+</div><!-- /main -->
 
-  <!-- Toast notification -->
-  <div class="toast" id="toast"></div>
+<!-- Toast notification -->
+<div class="toast" id="toast"></div>
 
-  <!-- ══════════════════════════════════════════════════════════
-     JAVASCRIPT — load order matters:
-     utils → api → panel → highlight → discovery → grounding → render
-══════════════════════════════════════════════════════════ -->
-  <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/panel.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/highlight.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/discovery.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/grounding.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/render.js') }}"></script>
+<!-- Scripts -->
+<script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+<script src="{{ url_for('static', filename='js/panel.js') }}"></script>
+<script src="{{ url_for('static', filename='js/highlight.js') }}"></script>
+<script src="{{ url_for('static', filename='js/discovery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/grounding.js') }}"></script>
+<script src="{{ url_for('static', filename='js/render.js') }}"></script>
 
-  <script>
+<script>
     const docsData = [
       {
         title: "Title: <strong>Chapter 1: The Impact of Social Media on Academic Performance Among High School Students</strong>",
         body: `
         <div style="text-align: center; margin-bottom: 30px;">
-          <h2>The Impact of Social Media on Academic Performance Among High School Students</h2>
-          <br>
-          <p>A Research Proposal Presented to the Faculty of the Senior High School Department</p>
-          <br>
-          <p>In Partial Fulfillment of the Requirements for Practical Research</p>
-          <br>
+          <h2>The Impact of Social Media on Academic Performance Among High School Students</h2><br>
+          <p>A Research Proposal Presented to the Faculty of the Senior High School Department</p><br>
+          <p>In Partial Fulfillment of the Requirements for Practical Research</p><br>
           <p>By: [Student Names]</p>
           <p>Month, Year</p>
         </div>
-
         <h3>Abstract</h3>
-        <p>This study aims to investigate the complex relationship between social media usage and the academic performance of high school students. With the ubiquitous nature of digital platforms in adolescent life, concerns have been raised regarding their potential to distract students, reduce study time, and disrupt sleep patterns. By surveying a diverse cohort of 11th and 12th graders, this research will quantify daily screen time across various platforms and correlate it with grade point averages (GPA) and self-reported study habits. Preliminary findings suggest a negative correlation between high non-academic social media usage and academic achievement, highlighting the need for educational interventions that promote responsible digital citizenship.</p>
-        <br>
-
-        <h3>Chapter 1: The Problem and Its Background</h3>
-        <br>
-
+        <p>This study aims to investigate the complex relationship between social media usage and the academic performance of high school students. With the ubiquitous nature of digital platforms in adolescent life, concerns have been raised regarding their potential to distract students, reduce study time, and disrupt sleep patterns. By surveying a diverse cohort of 11th and 12th graders, this research will quantify daily screen time across various platforms and correlate it with grade point averages (GPA) and self-reported study habits. Preliminary findings suggest a negative correlation between high non-academic social media usage and academic achievement, highlighting the need for educational interventions that promote responsible digital citizenship.</p><br>
+        <h3>Chapter 1: The Problem and Its Background</h3><br>
         <h4>Background of the Study</h4>
         <p>In the contemporary digital era, social media platforms such as Instagram, TikTok, Facebook, and Snapchat have fundamentally altered the landscape of adolescent communication, socialization, and information consumption. The pervasive integration of these technologies into the daily routines of high school students is unprecedented. Given this ubiquity, understanding how these platforms intersect with educational outcomes has become a critical area of investigation for educators, parents, and policymakers.</p>
         <p>Proponents of social media argue that it fosters collaborative learning, provides access to diverse perspectives, and supports peer-to-peer academic engagement. Conversely, critics suggest a myriad of negative consequences. Anecdotal evidence and preliminary survey data often indicate that excessive social media usage strongly correlates with reduced study time, increased distractibility in the classroom, and poorer academic outcomes overall.</p>
-
         <h4>Statement of the Problem</h4>
         <p>This study seeks to answer the overarching question: How does daily social media consumption impact the academic performance of senior high school students?</p>
         <p>Specifically, it aims to answer the following sub-problems:</p>
@@ -567,166 +576,110 @@
           <li>Which social media platforms are most frequently used for non-academic purposes?</li>
           <li>Is there a significant relationship between the hours spent on social media and the students' General Weighted Average (GWA)?</li>
         </ol>
-
         <h4>Conceptual Framework</h4>
-        <p>The study utilizes an Independent Variable-Dependent Variable (IV-DV) model. The independent variable is the <strong>Social Media Usage</strong>, measured in hours per day and type of platform used. The dependent variable is the students' <strong>Academic Performance</strong>, quantified by their most recent General Weighted Average (GWA). The study hypothesizes that as the independent variable (non-academic screen time) increases, the dependent variable (academic performance) will decrease, mediated by factors such as sleep deprivation and reduced study hours.</p>
-
+        <p>The study utilizes an Independent Variable-Dependent Variable (IV-DV) model. The independent variable is the <strong>Social Media Usage</strong>, measured in hours per day and type of platform used. The dependent variable is the students' <strong>Academic Performance</strong>, quantified by their most recent General Weighted Average (GWA).</p>
         <h4>Significance of the Study</h4>
-        <p>The findings of this research will be beneficial to several stakeholders:</p>
         <ul style="margin-left: 40px; margin-bottom: 13px;">
           <li><strong>Students:</strong> It will raise awareness regarding their digital habits and encourage better time management.</li>
           <li><strong>Teachers:</strong> It will provide insights into how digital distractions affect learning, helping them formulate better classroom policies.</li>
-          <li><strong>Parents:</strong> It will serve as a guide for monitoring and regulating their children’s screen time at home.</li>
+          <li><strong>Parents:</strong> It will serve as a guide for monitoring and regulating their children's screen time at home.</li>
           <li><strong>Future Researchers:</strong> It will act as foundational literature for subsequent studies on digital well-being and education.</li>
         </ul>
-
         <h4>Scope and Delimitation</h4>
-        <p>This study is strictly limited to 11th and 12th-grade students enrolled during the current academic year at the target institution. It will focus primarily on the quantitative correlation between self-reported social media usage and academic grades. It does not intend to diagnose psychological conditions such as clinical social media addiction or ADHD.</p>
-
+        <p>This study is strictly limited to 11th and 12th-grade students enrolled during the current academic year at the target institution.</p>
         <h4>Definition of Terms</h4>
         <ul style="margin-left: 40px; margin-bottom: 13px;">
           <li><strong>Academic Performance:</strong> The measurable educational achievement of a student, represented in this study by their General Weighted Average (GWA).</li>
           <li><strong>Social Media:</strong> Websites and applications that enable users to create and share content or participate in social networking (e.g., TikTok, Instagram).</li>
           <li><strong>Screen Time:</strong> The total amount of time an individual spends interacting with device screens per day.</li>
-        </ul>
-      `
+        </ul>`
       },
       {
         title: "Title: <strong>Chapter 1: Effects of Sleep Deprivation on Cognitive Function in College Students</strong>",
         body: `
         <div style="text-align: center; margin-bottom: 30px;">
-          <h2>Effects of Sleep Deprivation on Cognitive Function in College Students</h2>
-          <br>
-          <p>A Research Proposal Presented to the Department of Psychology</p>
-          <br>
-          <p>In Partial Fulfillment of the Requirements for Cognitive Psychology</p>
-          <br>
+          <h2>Effects of Sleep Deprivation on Cognitive Function in College Students</h2><br>
+          <p>A Research Proposal Presented to the Department of Psychology</p><br>
+          <p>In Partial Fulfillment of the Requirements for Cognitive Psychology</p><br>
           <p>By: [Student Names]</p>
           <p>Month, Year</p>
         </div>
-
         <h3>Abstract</h3>
-        <p>Sleep deprivation is highly prevalent among college students, often resulting from heavy academic workloads, extracurricular commitments, and poor time management. This study investigates the direct impact of insufficient sleep on specific cognitive functions, primarily working memory, sustained attention, and executive decision-making. Utilizing standardized neurocognitive assessments administered to a sample of undergraduate students reporting varied sleep durations, the research aims to quantify cognitive deficits associated with acute and chronic sleep loss. The results are expected to underscore the critical necessity of adequate sleep hygiene for academic success and overall cognitive health in university populations.</p>
-        <br>
-
-        <h3>Chapter 1: The Problem and Its Background</h3>
-        <br>
-
+        <p>Sleep deprivation is highly prevalent among college students, often resulting from heavy academic workloads, extracurricular commitments, and poor time management. This study investigates the direct impact of insufficient sleep on specific cognitive functions, primarily working memory, sustained attention, and executive decision-making.</p><br>
+        <h3>Chapter 1: The Problem and Its Background</h3><br>
         <h4>Background of the Study</h4>
-        <p>Sleep deprivation is an epidemic within collegiate populations worldwide, often rationalized by students as an inevitable trade-off for academic and social success. College demands, characterized by heavy course loads, part-time employment, and an active social life, frequently compel students to sacrifice adequate rest. Despite growing awareness campaigns, the normalization of sleep deficiency remains deeply entrenched in university culture.</p>
-        <p>From a neurobiological standpoint, sufficient sleep is unequivocally essential for optimal cognitive function, particularly regarding memory consolidation, executive function, and emotional regulation. When sleep architecture is repeatedly disrupted, the brain exhibits decreased metabolic activity in the prefrontal cortex, leading to impaired decision-making, diminished sustained attention, and lower overall academic retention.</p>
-
+        <p>Sleep deprivation is an epidemic within collegiate populations worldwide, often rationalized by students as an inevitable trade-off for academic and social success.</p>
         <h4>Statement of the Problem</h4>
-        <p>This research aims to determine the effects of varying degrees of sleep deprivation on the cognitive functionality of undergraduate students.</p>
-        <p>Specifically, it seeks to answer the following questions:</p>
         <ol style="margin-left: 40px; margin-bottom: 13px;">
           <li>What is the average number of hours of sleep obtained by college students during a typical academic week?</li>
           <li>How does getting less than six hours of sleep per night affect performance on working memory tasks?</li>
           <li>Is there a significant difference in sustained attention between adequately rested students and sleep-deprived students?</li>
         </ol>
-
         <h4>Theoretical Framework</h4>
-        <p>This study is anchored on the <strong>Synaptic Homeostasis Hypothesis (SHY)</strong> proposed by Tononi and Cirelli. SHY posits that learning during wakefulness strengthens synaptic connections throughout the brain, increasing cellular energy demands. Sleep is necessary to downscale these synapses, restoring cellular homeostasis, consolidating memories, and freeing up capacity for new learning the following day. When sleep is curtailed, this downscaling process is incomplete, leading to cognitive saturation and impaired learning capacity.</p>
-
-        <h4>Significance of the Study</h4>
-        <p>The results of this study are deemed highly significant to the following groups:</p>
-        <ul style="margin-left: 40px; margin-bottom: 13px;">
-          <li><strong>University Administrators:</strong> It provides empirical data to justify policies that promote student well-being, such as adjusting early class schedules or managing assignment loads.</li>
-          <li><strong>Counseling Services:</strong> It emphasizes the need to include sleep hygiene education in student wellness programs.</li>
-          <li><strong>Students:</strong> It offers scientific proof of the detrimental effects of "pulling all-nighters," encouraging healthier lifestyle choices.</li>
-        </ul>
-
-        <h4>Scope and Delimitation</h4>
-        <p>The study is confined to undergraduate students currently enrolled in the College of Arts and Sciences. The assessment of cognitive function will be limited to computerized working memory (N-back test) and sustained attention (PVT) tasks. It will rely on self-reported sleep logs rather than polysomnography (clinical sleep tracking).</p>
-
-        <h4>Definition of Terms</h4>
-        <ul style="margin-left: 40px; margin-bottom: 13px;">
-          <li><strong>Sleep Deprivation:</strong> The condition of obtaining inadequate sleep, defined in this study as consistently sleeping less than 6 hours per 24-hour cycle.</li>
-          <li><strong>Cognitive Function:</strong> Mental processes involving the acquisition, storage, retrieval, and use of information, specifically memory and attention.</li>
-          <li><strong>Working Memory:</strong> The system responsible for the transient holding and processing of new and already-stored information.</li>
-        </ul>
-      `
+        <p>This study is anchored on the <strong>Synaptic Homeostasis Hypothesis (SHY)</strong> proposed by Tononi and Cirelli.</p>`
       },
       {
         title: "Title: <strong>Chapter 1: The Role of Gamification in Enhancing Student Engagement</strong>",
         body: `
         <div style="text-align: center; margin-bottom: 30px;">
-          <h2>The Role of Gamification in Enhancing Student Engagement in Middle School Mathematics</h2>
-          <br>
-          <p>A Research Proposal Presented to the College of Education</p>
-          <br>
-          <p>In Partial Fulfillment of the Requirements for Educational Technology</p>
-          <br>
+          <h2>The Role of Gamification in Enhancing Student Engagement in Middle School Mathematics</h2><br>
+          <p>A Research Proposal Presented to the College of Education</p><br>
+          <p>In Partial Fulfillment of the Requirements for Educational Technology</p><br>
           <p>By: [Student Names]</p>
           <p>Month, Year</p>
         </div>
-
         <h3>Abstract</h3>
-        <p>As traditional pedagogical methods struggle to maintain the attention of digital-native students, educators are increasingly turning to gamification—the integration of game design elements into non-game environments. This study explores the efficacy of gamified learning platforms (e.g., Kahoot!, Quizizz, Classcraft) in enhancing behavioral and cognitive engagement among middle school mathematics students. By utilizing a mixed-methods approach involving classroom observations, student surveys, and academic performance tracking over a six-week period, the research seeks to compare engagement levels between traditionally taught classes and those utilizing gamified mechanics. Findings will offer pedagogical recommendations for the effective and sustainable implementation of game-based learning.</p>
-        <br>
-
-        <h3>Chapter 1: The Problem and Its Background</h3>
-        <br>
-
+        <p>As traditional pedagogical methods struggle to maintain the attention of digital-native students, educators are increasingly turning to gamification—the integration of game design elements into non-game environments.</p><br>
+        <h3>Chapter 1: The Problem and Its Background</h3><br>
         <h4>Background of the Study</h4>
-        <p>Traditional teaching methods increasingly face challenges in maintaining student motivation and engagement in the modern classroom. As digital native students become accustomed to highly interactive and rewarding virtual environments, static educational models—such as prolonged lectures and rote memorization—often fail to captivate their attention. In response, gamification has emerged as a promising educational strategy.</p>
-        <p>Integrating mechanics such as point systems, leaderboards, badges, and narrative-driven quests into academic curricula has been shown to stimulate both intrinsic and extrinsic motivation. When properly implemented, gamified learning environments can transform passive observers into active participants, fostering a sense of autonomy and competence that is critical for self-directed learning. However, questions remain regarding whether these interactive systems lead to long-term academic retention or merely short-term behavioral compliance.</p>
-
+        <p>Traditional teaching methods increasingly face challenges in maintaining student motivation and engagement in the modern classroom.</p>
         <h4>Statement of the Problem</h4>
-        <p>This study aims to evaluate the impact of gamification strategies on the engagement and academic performance of 8th-grade mathematics students.</p>
-        <p>Specifically, it aims to answer:</p>
         <ol style="margin-left: 40px; margin-bottom: 13px;">
           <li>What is the level of student engagement in mathematics prior to the implementation of gamified learning?</li>
           <li>How do specific game mechanics (badges, leaderboards, points) influence student motivation to complete assignments?</li>
           <li>Is there a significant difference in assessment scores between students exposed to gamified learning versus traditional instruction?</li>
         </ol>
-
         <h4>Theoretical Framework</h4>
-        <p>This research is grounded in the <strong>Self-Determination Theory (SDT)</strong> authored by Deci and Ryan. SDT asserts that human motivation is driven by three innate psychological needs: competence, autonomy, and relatedness. Gamification directly addresses these needs by providing immediate feedback and achievable goals (competence), allowing students multiple paths to succeed (autonomy), and fostering community through team-based mechanics or friendly competition (relatedness). When these three elements are satisfied, intrinsic motivation is maximized.</p>
-
-        <h4>Significance of the Study</h4>
-        <p>The study provides valuable insights for:</p>
-        <ul style="margin-left: 40px; margin-bottom: 13px;">
-          <li><strong>Curriculum Developers:</strong> It offers evidence to support the integration of interactive technologies into standard curricula.</li>
-          <li><strong>Teachers:</strong> It provides practical strategies for managing classroom behavior and boosting participation without relying solely on punitive measures.</li>
-          <li><strong>Students:</strong> It helps create a more enjoyable, stress-reduced learning environment that caters to modern technological fluency.</li>
-        </ul>
-
-        <h4>Scope and Delimitation</h4>
-        <p>This study focuses exclusively on 8th-grade mathematics classes at a single public middle school over a six-week grading period. Engagement will be assessed via self-reported surveys and teacher observational checklists. The research will not evaluate the financial costs of purchasing gamified software licenses.</p>
-
-        <h4>Definition of Terms</h4>
-        <ul style="margin-left: 40px; margin-bottom: 13px;">
-          <li><strong>Gamification:</strong> The application of typical elements of game playing (e.g., point scoring, competition with others, rules of play) to educational activities.</li>
-          <li><strong>Student Engagement:</strong> The degree of attention, curiosity, interest, optimism, and passion that students show when they are learning or being taught.</li>
-          <li><strong>Intrinsic Motivation:</strong> The inner drive to engage in an activity purely for the joy and satisfaction inherent in the activity itself.</li>
-        </ul>
-      `
+        <p>This research is grounded in the <strong>Self-Determination Theory (SDT)</strong> authored by Deci and Ryan.</p>`
       }
     ];
 
     function switchDoc(index) {
-      document.querySelectorAll('.dtab').forEach((el, i) => {
-        if (i === index) {
-          el.style.background = 'var(--blue-light)';
-        } else {
-          el.style.background = 'transparent';
+        document.querySelectorAll('.dtab').forEach((el, i) => {
+            el.style.background = i === index ? 'var(--blue-light)' : 'transparent';
+        });
+        const titleEl = document.querySelector('.doc-page-title');
+        const bodyEl = document.getElementById('doc-body');
+        if (titleEl && bodyEl) {
+            titleEl.innerHTML = docsData[index].title;
+            bodyEl.innerHTML = docsData[index].body;
         }
-      });
-      const titleEl = document.querySelector('.doc-page-title');
-      const bodyEl = document.getElementById('doc-body');
-      if (titleEl && bodyEl) {
-        titleEl.innerHTML = docsData[index].title;
-        bodyEl.innerHTML = docsData[index].body;
-      }
     }
 
-    // Initialize first doc
-    window.addEventListener('DOMContentLoaded', () => {
-      switchDoc(0);
-    });
-  </script>
+    window.addEventListener('DOMContentLoaded', () => { switchDoc(0); });
 
+    function showVerifaiOverview() {
+        document.getElementById('side-panel').classList.add('open');
+        document.getElementById('view-welcome').style.display = 'block';
+        document.getElementById('view-discovery').style.display = 'none';
+        document.getElementById('view-grounding').style.display = 'none';
+        document.getElementById('view-results').style.display = 'none';
+        document.getElementById('step-bar').style.display = 'none';
+    }
+
+    function triggerVerifaiDiscovery() {
+        document.getElementById('side-panel').classList.add('open');
+        document.getElementById('view-welcome').style.display = 'none';
+        document.getElementById('view-discovery').style.display = 'block';
+        document.getElementById('step-bar').style.display = 'flex';
+        document.getElementById('sc1').classList.add('active');
+        document.getElementById('sl1').classList.add('active');
+        if (typeof startSearch === 'function') startSearch();
+    }
+
+    function togglePanel() {
+        document.getElementById('side-panel').classList.toggle('open');
+    }
+</script>
 </body>
-
 </html>
